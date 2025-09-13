@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+        background-color : lightgrey;
+        border-radius :5px;
+        border-width : 1px;
+        text-align: left;
+        height : 30px;
+        font-weight : 400;
+        border-color: gray;
+        }
+        button:hover {
+            background-color: yellow;
+            color: white;
+            font-weight: 800;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body style="padding : 10px">
+    <div style="background-color:green; padding: 15px; border-radius: 5px; color:white">   
+        <div style="font-size: 25px; font-weight: 1000;">Welcome to 박석준's HomePage 22201020 </div>
+        <div> Use the menu to select different Stylesheet</div>
+    </div>
+
+    <div style="display:flex; flex-direction: row; margin-top: 5px;">
+        <!--첫번째 열-->
+        <div style=" display: flex; flex-direction: column; gap: 5px; width : 20%;">
+                <button onclick="location.href='style1.html'" style="background-color: green; color:white; font-weight: 800;">Stylesheet 1</button>
+                <button onclick="location.href='style2.html'" >Stylesheet 2</button>
+                <button style="text-align: left;">Stylesheet 3</button>
+                <button style="text-align: left;">Stylesheet 4</button>
+                <button onclick="location.href='index.html'" >No Stylesheet</button>
+
+            
+        </div>
+        
+        <!--두번째 열-->
+        <div style="padding:20px; display:flex; flex-direction: column; gap:15px">
+            <div style="font-size:32px; font-weight:900">Same Page Different Stylesheets</div>
+
+            <div>
+                <div>This is a demonstration of how different stylesheets can change the layout of your HTML page. You can change the layout of this page by selecting different stylesheets in the menu, or by selecting one of the following links:</div>
+                
+                    <a href="style1.html">StyleSheet1,</a>
+                    <a href="">StyleSheet2,</a>
+                    <a href="style2.html">StyleSheet3,</a>
+                    <a href="">StyleSheet4.</a>
+            </div>
+
+            <div style="font-size:24px; font-weight:900">No Styles</div>
+
+            <div>
+                <div>This page uses DIV elements to group different sections of the HTML page. Click here to see how the page looks like with no stylesheet:</div>
+
+                <a href="">No Stylesheet</a>
+            </div>
+        </div>
+        <!--세번째 열-->
+        <div style="background-color: lightblue; padding:3px; border-radius:5px; padding: 10px; flex-basis:25%; padding-top:40px">
+            <div style="color:white; font-size:20px; font-weight:800">Side-Bar</div>
+            <p style="color:white; font-size: 16px; font-weight:500">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+        </div>
+    </div>
+
+
+    <div style="margin-top:5px; background-color : lightgrey; padding:10px; border-radius:5px; border-width : 10px">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</div>
+</body>
+</html>
