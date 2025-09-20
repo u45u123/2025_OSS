@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout Form added javascript for validation</title>
+<style>
+input[type=text], input[type=date], input[type=number], select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
+textarea {
+    min-height: 80px;
+    max-height: 300px;
+    resize: vertical;
+}
+input[type=checkbox], input[type=radio] {
+    margin-right: 8px;
+}
+button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
+}
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 4px;
+}
+hr {
+    margin: 20px 0;
+    border: 1px solid #ccc;
+}
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+.form-row > div {
+    flex: 1;
+}
+</style>
+</head>
+<body>
+<div style="padding: 20px; max-width: 800px; margin: auto;">
+    <div style="font-size:24px; margin-bottom:16px;">Billing Address</div>
+    <form id="checkoutForm">
+        <div class="form-row">
+            <div>
+                <label for="input_firstname">First name</label>
+                <input type="text" id="input_firstname" name="firstname">
+            </div>
+            <div>
+                <label for="input_lastname">Last name</label>
+                <input type="text" id="input_lastname" name="lastname">
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div>
+                <label for="email">Email (Optional)</label>
+                <input type="text" id="email" name="email">
+            </div>
+        </div>
+        <div>
+            <label for="address">Address</label>
+            <textarea id="address" name="address" placeholder="1234 Main St"></textarea>
+        </div>
+        <div class="form-row">
+            <div>
+                <label for="country">Country</label>
+                <select id="country" name="country">
+                    <option value="">Choose...</option>
+                    <option value="United States">United States</option>
+                </select>
+            </div>
+            <div>
+                <label for="state">State</label>
+                <select id="state" name="state">
+                    <option value="">Choose...</option>
+                    <option value="California">California</option>
+                </select>
+            </div>
+            <div>
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" name="zip">
+            </div>
+        </div>
+        <hr>
+        <div class="form-row">
+            <div>
+                <input type="checkbox" id="sameAddress">
+                <label for="sameAddress">Shipping address is the same as my billing address</label>
+            </div>
+            <div>
+                <input type="checkbox" id="saveInfo">
+                <label for="saveInfo">Save this information for next time</label>
+            </div>
+        </div>
+        <hr>
+        <div style="font-size:24px; margin-bottom:16px;">Payment</div>
+        <div class="form-row" style="margin-bottom:16px;">
+            <div style="display:flex; align-items:center; gap:4px;">
+                <input type="radio" name="payment" id="creditCard" checked>
+                <label for="creditCard">Credit Card</label>
+            </div>
+            <div style="display:flex; align-items:center; gap:4px;">
+                <input type="radio" name="payment" id="debitCard">
+                <label for="debitCard">Debit Card</label>
+            </div>
+            <div style="display:flex; align-items:center; gap:4px;">
+                <input type="radio" name="payment" id="paypal">
+                <label for="paypal">PayPal</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                <label for="NameOnCard">Name on card</label>
+                <input type="text" id="NameOnCard" name="NameOnCard">
+            </div>
+            <div>
+                <label for="CreditCardNumber">Credit card number</label>
+                <input type="text" id="CreditCardNumber" name="CreditCardNumber">
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                <label for="Expiration">Expiration</label>
+                <input type="date" id="Expiration" name="Expiration">
+            </div>
+            <div>
+                <label for="CVV">CVV</label>
+                <input type="number" id="CVV" name="CVV">
+            </div>
+        </div>
+        <hr>
+        <button type="submit">Continue to checkout</button>
+    </form>
+</div>
+<script>
+document.getElementById("checkoutForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const requiredFields = [
+        {id: "input_firstname", name: "First name"},
+        {id: "input_lastname", name: "Last name"},
+        {id: "username", name: "Username"},
+        {id: "address", name: "Address"},
+        {id: "country", name: "Country"},
+        {id: "state", name: "State"},
+        {id: "zip", name: "Zip"},
+        {id: "NameOnCard", name: "Name on card"},
+        {id: "CreditCardNumber", name: "Credit card number"},
+        {id: "Expiration", name: "Expiration"},
+        {id: "CVV", name: "CVV"}
+    ];
+    for(let f of requiredFields){
+        let val = document.getElementById(f.id).value.trim();
+        if(!val){
+            alert(f.name + " is required");
+            document.getElementById(f.id).focus();
+            return;
+        }
+    }
+    this.submit();
+});
+</script>
+</body>
+</html>

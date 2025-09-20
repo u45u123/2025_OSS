@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form HTML</title>
+</head>
+<body>
+    <div>Billing address</div>
+    <div>
+        <form>
+            <label for="input_firstname">First name</label>
+            <input type="text" id="input_firstname" name="firstname">
+
+            <label for="input_lastname">Last name</label>
+            <input type="text" id="input_lastname" name="lastname">
+
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username">
+
+            <label for="email">Email (Optional)</label>
+            <input type="text" id="email" name="email">
+
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address">
+
+            <label for="country">Country</label>
+            <select id="country" name="country">
+                <option value="Choosing">Choose...</option>
+                <option value="United States">United States</option>
+            </select>
+
+            <label for="state">State</label>
+            <select id="state" name="state">
+                <option value="Choosing">Choose...</option>
+                <option value="California">California</option>
+            </select> 
+
+            <label for="zip">Zip</label>
+            <input type="text" id="zip" name="zip">
+
+            <hr>
+            <input type="checkbox"> Shipping address is the same as my billing address<br/>
+            <input type="checkbox"> Save this information for next time
+            <hr>
+
+            <div>Payment</div>
+
+            <input type="radio" name="payment" checked> Credit Card <br/>
+            <input type="radio" name="payment"> Debit Card <br/>
+            <input type="radio" name="payment"> Pay Pal <br/>
+
+            <label for="NameOnCard">Name on card</label>
+            <input type="text" id="NameOnCard" name="NameOnCard">
+
+            <label for="CreditCardNumber">Credit card number</label>
+            <input type="text" id="CreditCardNumber" name="CreditCardNumber">
+
+            <label for="Expiration">Expiration</label>
+            <input type="date" id="Expiration" name="Expiration">
+
+            <label for="CVV">CVV</label>
+            <input type="number" id="CVV" name="CVV">
+
+            <hr>
+            <button type="submit">Continue to checkout</button>
+        </form>
+    </div>
+</body>
+</html>

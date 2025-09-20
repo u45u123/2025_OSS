@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Web page</title>
+  <style>
+    
+    
+    input {
+      width: 250px;
+      padding: 6px;
+      font-size: 1em;
+    }
+    button {
+      padding: 6px 12px;
+      margin-left: 5px;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    #addBtn {
+      background-color: blue;
+    }
+    #removeBtn {
+      background-color: green;
+    }
+    ul {
+      margin-top: 20px;
+      text-align: left;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dynamic Web page</h1>
+  <input type="text" id="itemInput" placeholder="과일을 입력하세요">
+  <button id="addBtn">추가</button>
+  <button id="removeBtn">삭제</button>
+  <br/>
+  
+  <ul id="itemList"></ul>
+
+  <script>
+    
+    document.addEventListener("DOMContentLoaded", function() {
+      
+
+      const input = document.getElementById("itemInput");
+      const addBtn = document.getElementById("addBtn");
+      const removeBtn = document.getElementById("removeBtn");
+      const itemList = document.getElementById("itemList");
+
+      
+      addBtn.addEventListener("click", function() {
+        const text = input.value.trim();
+        if (text !== "") {
+          const li = document.createElement("li");
+          li.textContent = text;
+          itemList.appendChild(li);
+          input.value = "";
+        }
+      });
+
+     
+      removeBtn.addEventListener("click", function() {
+        itemList.innerHTML = ""; 
+        input.value = ""; 
+      });
+    });
+
+    
+  </script>
+</body>
+</html>

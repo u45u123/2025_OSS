@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //console.log("javascript는 java와는 완전히 다른 언어입니다.")
+
+        let width1 = window.innerWidth
+        //alert(width1)
+        let width2 = window.outerWidth
+        //alert(width2)
+        
+
+        let obj = {
+            phone : "010-9999-8888",
+            name : "psj",
+            greet : function(){
+                alert("오브젝트 함수")
+            }
+        }
+
+        function add(){
+            var num1 = document.getElementById("num1");
+            var num2 = document.getElementById("num2");
+
+            var sum = parseInt(num1.value)+parseInt(num2.value);
+            var result = document.getElementById("result");
+            result.value = sum;
+        }
+
+        
+    </script>
+
+    <form>
+        <input type="number" size=2 name="num1" id="num1">+
+        <input type="number" size=2 name="num2" id="num2">
+        <button onclick=add() type="button">=</button>
+        <input type="number" size=2 name="result" id="result" readonly>
+        <br><br>
+        <input type="reset">
+    </form>
+
+    <div  onmouseover="console.log('mouseover')" style="background-color: aqua;" >
+       div tag
+    </div>
+
+
+</body>
+</html>
