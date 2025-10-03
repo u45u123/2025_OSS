@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <style>
+        .div_obj{
+            position:fixed;
+            top: 50px;
+            width : 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+        .div_btn{
+            background-color: aqua;
+            left : 50px;
+        }
+        .div_goal{
+            left: 450px;
+            background-color: yellow;
+        }
+    </style>
+
+    <input id="input_score">
+
+    <div id="div_btn" class="div_obj div_btn">OBJ</div>
+    <div class="div_obj div_goal">GOAL</div>
+
+    <script>
+        let starttime = null;
+        let finishtime = null;
+        let diff = 0;
+
+        let target_move = 0;
+        let temp_move = 0;
+        let move_function = null;
+
+        let div_btn = document.getElementById('div_btn');
+
+        div_btn.addEventListener('mousedown', function(){
+            starttime = new Date();
+            console.log('starttime : ' + starttime);
+        });
+
+        div_btn.addEventListener('mouseup', function(){
+            finishtime = new Date();
+            console.log('finishtime : ' + finishtime);
+            diff = finishtime - starttime;
+            console.log('diff(ms) : ' + diff);
+
+            
+            target_move = diff / 10;
+            temp_move = 0;
+
+           
+            if(move_function) clearInterval(move_function);
+
+            
+            move_function = setInterval(listner_move, 10);
+        });
+
+        function listner_move(){
+            temp_move += target_move / 100; 
+
+            if(temp_move >= target_move){
+                clearInterval(move_function);
+                temp_move = target_move; 
+            }
+
+            $(".div_btn").css("left", (50 + temp_move) + "px");
+        }
+    </script>
+</body>
+</html>

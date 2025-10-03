@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="my.css">
+
+    <script>
+        function validateForm() {
+            const bookTitle = document.getElementById('book-title').value;
+            const author = document.getElementById('author').value;
+            const publisher = document.getElementById('publisher').value;
+            const publicationYear = document.getElementById('publication-year').value;
+
+            if (bookTitle.trim() === '') {
+                alert('도서명을 입력하세요.');
+                document.getElementById('book-title')
+                return false;
+            }
+
+            if (author.trim() === '') {
+                alert('저자를 입력하세요.');
+                document.getElementById('author')
+                return false;
+            }
+
+            if (publisher.trim() === '') {
+                alert('출판사를 입력하세요.');
+                document.getElementById('publisher')
+                return false;
+            }
+
+            if (publicationYear.trim() === '') {
+                alert('출판년도를 입력하세요.');
+                document.getElementById('publication-year')
+                return false;
+            }
+
+         
+            alert('게시물이 추가됩니다.');
+            return true;
+        }
+
+      
+    </script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>새 도서 추가</h1>
+        <form onsubmit="return validateForm()">
+            <table>
+                <tr>
+                    <th>도서명</th>
+                    <td><input type="text" id="book-title" name="book-title"></td>
+                </tr>
+                <tr>
+                    <th>저자</th>
+                    <td><input type="text" id="author" name="author"></td>
+                </tr>
+                <tr>
+                    <th>출판사</th>
+                    <td><input type="text" id="publisher" name="publisher"></td>
+                </tr>
+                <tr>
+                    <th>출판년도</th>
+                    <td><input type="text" id="publication-year" name="publication-year"></td>
+                </tr>
+                <tr>
+                    <th>고유번호</th>
+                    <td><input type="text" id="publication-year" name="publication-year"></td>
+                </tr>
+                <tr>
+                    <th>대출가능성</th>
+                    <td><input type="text" id="publication-year" name="publication-year"></td>
+                </tr>
+            </table>
+            <div class="d-flex justify-content-center mt-3">
+                <button type="submit" class="btn btn-primary me-2">확인</button>
+                <button type="button" class="btn btn-secondary" onclick="location.href='index.html'">취소</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
