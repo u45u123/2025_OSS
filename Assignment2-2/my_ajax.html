@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input, button { margin: 5px; }
+    table { width: 100%; margin-top: 15px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f0f0f0; }
+  </style>
+</head>
+<body>
+  <h2>학생 관리 시스템</h2>
+  <div>
+    <input type="text" id="name" placeholder="이름" />
+    <input type="number" id="age" placeholder="나이" />
+    <input type="text" id="major" placeholder="전공" />
+    <input type="text" id="grade" placeholder="성적" />
+    <button id="btnAdd">추가</button>
+    <button id="btnLoad">목록보기</button>
+  </div>
+  <div id="contents"></div>
+  <script>
+    const API_URL = "http://localhost:3000/students";
+
+    $(document).ready(() => {
+      $("#btnLoad").on("click", getStudents);
+      $("#btnAdd").on("click", addStudent);
+      getStudents();
+    });
+
+    function getStudents() {
+      $.ajax({
+        url: API_URL,
+        type: "GET",
+        dataType: "json",
+        success: function (res) {
+          $("#contents").html(makeTable(res));
+        },
+        error: function (xhr, status, err) {
+          console.error("목록 가져오기 오류:", err);
+        },
+      });
+    }
+
+    function addStudent() {
+      const name = $("#name").val();
+      const age = $("#age").val();
+      const major = $("#major").val();
+      const grade = $("#grade").val();
+
+      if (!name || !age || !major || !grade) {
+        alert("모든 항목을 입력하세요!");
+        return;
+      }
+
+      $.ajax({
+        url: API_URL,
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ name, age, major, grade }),
+        success: function () {
+          alert("학생 추가 완료!");
+          $("#name, #age, #major, #grade").val("");
+          getStudents();
+        },
+      });
+    }
+
+    function updateStudent(id) {
+      const name = prompt("새 이름을 입력하세요:");
+      const age = prompt("새 나이를 입력하세요:");
+      const major = prompt("새 전공을 입력하세요:");
+      const grade = prompt("새 성적을 입력하세요:");
+
+      if (!name || !age || !major || !grade) return;
+
+      $.ajax({
+        url: `${API_URL}/${id}`,
+        type: "PUT",
+        contentType: "application/json",
+        data: JSON.stringify({ name, age, major, grade }),
+        success: function () {
+          alert("수정 완료!");
+          getStudents();
+        },
+      });
+    }
+
+    function deleteStudent(id) {
+      if (!confirm("정말 삭제하시겠습니까?")) return;
+
+      $.ajax({
+        url: `${API_URL}/${id}`,
+        type: "DELETE",
+        success: function () {
+          alert("삭제 완료!");
+          getStudents();
+        },
+      });
+    }
+
+    function makeTable(data) {
+      let str = `
+        <table>
+          <tr>
+            <th>ID</th><th>이름</th><th>나이</th><th>전공</th><th>성적</th><th>수정</th><th>삭제</th>
+          </tr>`;
+      for (let stu of data) {
+        str += `
+          <tr>
+            <td>${stu.id}</td>
+            <td>${stu.name}</td>
+            <td>${stu.age}</td>
+            <td>${stu.major}</td>
+            <td>${stu.grade}</td>
+            <td><button class="btn" onclick="updateStudent(${stu.id})">수정</button></td>
+            <td><button class="btn" onclick="deleteStudent(${stu.id})">삭제</button></td>
+          </tr>`;
+      }
+      str += "</table>";
+      return str;
+    }
+  </script>
+</body>
+</html>

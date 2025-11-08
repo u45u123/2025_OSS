@@ -1,0 +1,81 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "name": "학생1",
+      "age": 21,
+      "major": "컴퓨터공학",
+      "grade": "A"
+    },
+    {
+      "id": "2",
+      "name": "학2",
+      "age": 22,
+      "major": "전자공학",
+      "grade": "B+"
+    },
+    {
+      "id": "3",
+      "name": "학3",
+      "age": 20,
+      "major": "경영학",
+      "grade": "A-"
+    },
+    {
+      "id": "4",
+      "name": "학4",
+      "age": 23,
+      "major": "심리학",
+      "grade": "B"
+    },
+    {
+      "id": "5",
+      "name": "학5",
+      "age": 24,
+      "major": "의학",
+      "grade": "A+"
+    },
+    {
+      "id": "6",
+      "name": "학6",
+      "age": 25,
+      "major": "법학",
+      "grade": "B-"
+    },
+    {
+      "id": "7",
+      "name": "학7",
+      "age": 26,
+      "major": "언론정보학",
+      "grade": "A"
+    },
+    {
+      "id": "8",
+      "name": "학8",
+      "age": 28,
+      "major": "체육학",
+      "grade": "C+"
+    },
+    {
+      "id": "9",
+      "name": "학9",
+      "age": 27,
+      "major": "철학",
+      "grade": "B+"
+    },
+    {
+      "id": "10",
+      "name": "학10",
+      "age": 29,
+      "major": "경제학",
+      "grade": "A-"
+    },
+    {
+      "id": "ada4",
+      "name": "ss",
+      "age": "123",
+      "major": "asdf",
+      "grade": "asdfsadf"
+    }
+  ]
+}
