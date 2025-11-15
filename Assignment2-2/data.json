@@ -1,0 +1,39 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "name": "Jerry",
+      "age": 20
+    },
+    {
+      "id": "2",
+      "name": "Tom",
+      "age": 18
+    },
+    {
+      "id": 1762133123249,
+      "name": "새 학생"
+    },
+    {
+      "id": 1762133164880,
+      "name": "새 학생"
+    },
+    {
+      "id": "b131",
+      "name": "ㅂㅅㅈ",
+      "age": "222"
+    }
+  ],
+  "courses": [
+    {
+      "id": "1",
+      "cname": "Open source studio",
+      "credit": 3
+    },
+    {
+      "id": "2",
+      "cname": "Programming studio",
+      "credit": 2
+    }
+  ]
+}

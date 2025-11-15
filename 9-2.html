@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let fruits1 = ['apple', 'banana', 'cherry'];
+
+        let fruits2 = new Array('apple', 'banana', 'cherry');
+        for (let i = 0; i < fruits2.length; i++) {
+            console.log(fruits2[i]);
+        }
+        fruits1[fruits1.length] = 'grape';
+        console.log(fruits1);
+
+        function arrayPush(obj, value){
+            obj[obj.length] = value;
+            return obj.length;
+        }
+
+        const fruits = ["Bananas", "Oranges", "Apples", "Mangos"];
+        // Destructuring
+        var [fruit1, fruit2] = fruits;
+        var [fruit1,,,fruit2] = fruits;
+        var {[0]:fruit1 ,[1]:fruit2} = fruits;
+        
+        let numbers = [10, 20, 30, 40, 50];
+        const [a,b, ...rest] = numbers
+        console.log(a);    // 10
+        console.log(b);    // 20
+        console.log(rest); // [30, 40, 50]
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AJAX 실습 예제</title>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    p {
+      position: relative;
+    }
+    #contents {
+      margin-top: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #fafafa;
+    }
+    input {
+      margin-right: 5px;
+    }
+    button {
+      margin-right: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>jQuery + AJAX 실습</h2>
+
+  <!-- ✅ 기본 jQuery 예제 -->
+  <div id="div_01">div입니다.</div>
+
+  <p id="p1">이 문장은 클릭하면 사라집니다.</p>
+  <p id="p2">이 문장은 클릭하면 빨갛게 됩니다.</p>
+  <p id="p3">이 문장은 클릭하면 p2가 오른쪽으로 이동합니다.</p>
+
+  <hr />
+
+  <!-- ✅ AJAX 실습 영역 -->
+  <h3>학생 관리 (JSON Server 연동)</h3>
+
+  <input type="text" id="name" placeholder="이름 입력" />
+  <input type="number" id="age" placeholder="나이 입력" />
+  <button id="btnStu">학생 목록 가져오기</button>
+  <button id="btnAdd">학생 추가하기</button>
+
+  <div id="contents">여기에 학생 데이터가 표시됩니다.</div>
+
+  <script>
+    /* --------------------------------------------------
+     * 1️⃣ 순수 JS / jQuery 기본 동작
+     * -------------------------------------------------- */
+    let div_01 = document.getElementById("div_01");
+    //alert(div_01.innerText); // 순수 JS
+    let div_01_jq = $("#div_01");
+    //alert(div_01_jq.text()); // jQuery
+
+    // jQuery 이벤트 핸들러
+    $(document).ready(function () {
+      $("#p1").click(function () {
+        $(this).hide();
+      });
+      $("#p2").click(function () {
+        $(this).css("color", "red");
+      });
+      $("#p3").click(function () {
+        $("#p2").animate({ left: "250px" });
+      });
+    });
+
+    /* --------------------------------------------------
+     * 2️⃣ AJAX (JSON Server) 실습
+     * -------------------------------------------------- */
+
+    // 페이지 로드 후 버튼 이벤트 연결
+    window.onload = function () {
+      $("#btnStu").on("click", getStudents);
+      $("#btnAdd").on("click", postData);
+    };
+
+    // ✅ 학생 목록 가져오기 (GET)
+    function getStudents() {
+      $.ajax({
+        url: "http://localhost:3000/students",
+        type: "GET",
+        dataType: "json",
+        success: function (res) {
+          $("#contents").html(makeList(res));
+        },
+        error: function (xhr, status, err) {
+          console.error("오류:", status, err);
+        },
+      });
+    }
+
+    // ✅ 학생 추가하기 (POST)
+    function postData() {
+      const name = $("#name").val();
+      const age = $("#age").val();
+
+      if (!name || !age) {
+        alert("이름과 나이를 입력하세요!");
+        return;
+      }
+
+      $.ajax({
+        url: "http://localhost:3000/students",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ name: name, age: age }),
+        success: function (res) {
+          alert("학생이 추가되었습니다!");
+          $("#name").val("");
+          $("#age").val("");
+          getStudents(); // 목록 갱신
+        },
+        error: function (xhr, status, err) {
+          console.error("오류:", status, err);
+        },
+      });
+    }
+
+    // ✅ 학생 목록을 HTML로 변환
+    function makeList(data) {
+      let str = "<ul>";
+      for (let key in data) {
+        str += `<li>${data[key].name} (${data[key].age}세)</li>`;
+      }
+      str += "</ul>";
+      return str;
+    }
+  </script>
+</body>
+</html>
